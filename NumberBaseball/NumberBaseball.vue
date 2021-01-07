@@ -17,6 +17,7 @@ export default {
   methods: {
     onSubmitForm(e) {
       e.preventDefault(e);
+      this.tries.push(e.target.value);
     },
   },
 };
