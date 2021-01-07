@@ -9,13 +9,12 @@
 </head>
 <body>
    <div id='root'>
-       <div>{{first + 100}} X {{second}} ?</div>
-       <form >
-           <input type="number" v-model="value">
-           <button>Button</button>
-           <div id="result"></div>
-           <div>{{value}}</div>
+       <div>{{first}} X {{second}} ?</div>
+       <form v-on:submit="onSubmitForm">
+           <input type="number" ref="answer" v-model="value">
+           <button type="submit">Button</button>
        </form>
+       <div id="result">{{result}}</div>
 
    </div>
    <script>
@@ -27,7 +26,27 @@
                 value: '',
                 result: '',
             },
-            methods: {},
+            methods: {
+                onSubmitForm(e) {
+                    e.preventDefault();
+                    console.log(this);
+                    console.log(this.first, this.second, this.value);
+                    if(this.first * this.second === parseInt(this.value)) {
+                        this.result = 'Yes';
+                        this.first = Math.ceil(Math.random() * 9 );
+                        this.second = Math.ceil(Math.random() * 9);
+                        this.value = '';
+                        this.$refs.answer.focus();
+                        // this.input.focus();
+                    } else {
+                        this.result = 'No';
+                        this.value = '';
+                        this.$refs.answer.focus();
+                        // this.input.focus();
+
+                    }
+                }
+            },
         });
    </script>
 </body>
