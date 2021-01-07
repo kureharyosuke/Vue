@@ -8,12 +8,12 @@
 </head>
 <body>
     <div id="root">
-        <word-relay></word-relay>
-        <word-relay></word-relay>
-        <word-relay></word-relay>       
+        <word-relay start-word="vue"></word-relay>
+        <word-relay start-word="react"></word-relay>
+        <word-relay start-word="angular"></word-relay>       
     </div>
     <script>
-        Vue.component('word-relay', {
+        Vue.component('wordRelay', { //Global Component 전역컴포넌트
             template: `
             <div>
                 <div>{{word}}</div>
@@ -24,9 +24,10 @@
                 <div>{{result}}</div>
             </div>
             `,
+            props: ['startWord'],
             data() {
                 return {
-                word: 'vue',
+                word: this.startWord,
                 result: '',
                 value: '',
                 } 
