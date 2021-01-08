@@ -8,13 +8,13 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // {
-    //   path: "/",
-    //   name: "HelloVue",
-    //   component: HelloVue
-    // },
     {
       path: "/",
+      name: "HelloVue",
+      component: HelloVue
+    },
+    {
+      path: "/read",
       name: "Read",
       component: Read
     },
