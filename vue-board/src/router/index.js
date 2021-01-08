@@ -3,6 +3,7 @@ import Router from "vue-router";
 import HelloVue from "@/components/HelloVue";
 import Read from "@/components/Read";
 import Create from "@/components/Create";
+import Detail from "@/components/Detail";
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: "/create",
       name: "Create",
       component: Create
+    },
+    {
+      path: "/detail:createid",
+      name: "Detail",
+      component: Detail
     }
   ]
 });

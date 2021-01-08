@@ -7,9 +7,9 @@
         <td>제목</td>
         <td>내용</td>
       </tr>
-      <tr :key="index" v-for="(value, index) in data">
+      <tr :key="index" v-for="(value, index) in data" @click="detail(index)">
         <td>{{ value.number }}</td>
-        <td>{{ value.writer }}</td>
+        <td>{{ value.write }}</td>
         <td>{{ value.title }}</td>
         <td>{{ value.content }}</td>
       </tr>
@@ -33,6 +33,14 @@ export default {
     write() {
       this.$router.push({
         path: "create"
+      });
+    },
+    detail(index) {
+      this.$router.push({
+        name: "Detail",
+        params: {
+          contentId: index
+        }
       });
     }
   }
