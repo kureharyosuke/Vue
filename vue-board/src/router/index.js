@@ -1,15 +1,27 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from "vue";
+import Router from "vue-router";
+import HelloVue from "@/components/HelloVue";
+import Read from "@/components/Read";
+import Create from "@/components/Create";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
+    // {
+    //   path: "/",
+    //   name: "HelloVue",
+    //   component: HelloVue
+    // },
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: "/",
+      name: "Read",
+      component: Read
+    },
+    {
+      path: "/create",
+      name: "Create",
+      component: Create
     }
   ]
-})
+});
