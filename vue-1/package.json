@@ -1,0 +1,20 @@
+{
+  "name": "vue-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6"
+  },
+  "devDependencies": {
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
