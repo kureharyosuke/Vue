@@ -9,23 +9,24 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+    // {
+    //   path: "/",
+    //   name: "HelloVue",
+    //   component: HelloVue
+    // },
     {
       path: "/",
-      name: "HelloVue",
-      component: HelloVue
-    },
-    {
-      path: "/read",
       name: "Read",
       component: Read
     },
     {
-      path: "/create",
+      path: "/create/:contentId?",
+      // path: "/create/:contentId",
       name: "Create",
       component: Create
     },
     {
-      path: "/detail:createid",
+      path: "/detail/:contentId",
       name: "Detail",
       component: Detail
     }

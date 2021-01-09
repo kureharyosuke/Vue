@@ -9,7 +9,8 @@
       </tr>
       <tr :key="index" v-for="(value, index) in data" @click="detail(index)">
         <td>{{ value.number }}</td>
-        <td>{{ value.write }}</td>
+        <td>{{ value.writer }}</td>
+        <!-- write 아니고 writer  이 에러로 메인도 이동안됨.-->
         <td>{{ value.title }}</td>
         <td>{{ value.content }}</td>
       </tr>
@@ -42,7 +43,7 @@ export default {
           contentId: index
         }
       });
-    }
+    } // 라우터를 통하여, 디테일페이지로 이동
   }
 };
 </script>
