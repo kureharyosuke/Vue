@@ -25,7 +25,10 @@ module.exports = {
   },
 };
 
-/** rules: webapck error
+/** Error : 1
+ * version check =>  "vue": "^2.6.12"  = "vue-template-compiler": "^2.6.12",
+ *  
+ * rules: webapck error
  * ERROR in ./NumberBaseball.vue 1:0
 Module parse failed: Unexpected token (1:0)
 You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
