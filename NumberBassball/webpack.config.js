@@ -2,7 +2,11 @@ const path = require("path"); //node module : path
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
-  mode: "development", // or 'production'
+  mode: "development", // production : or 'production'
+  devtool: "eval", // production: or "hidden-source-map"
+  resolve: {
+    extensions: [".js", ".vue"], // import [ .vue] 사용안해도 됨.
+  },
   entry: {
     app: path.join(__dirname, "./main.js"),
   },
