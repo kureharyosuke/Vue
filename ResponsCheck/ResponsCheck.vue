@@ -1,6 +1,8 @@
 <template>
   <div>
     <div id="screen" v-bind:class="state">{{ message }}</div>
+    <!--  v-bind:class="state"> 가  state: "waiting", 를 가리킨다. -->
+    <!-- React className? -->
     <div>
       <div>평균 시간:{{ result }}</div>
       <button v-on:click="onReset">Reset</button>
@@ -24,7 +26,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/* scoped 사용하면 이 컴포넌트(ResponsCheck)안에서만 사용할수 있다. */
 #screen {
   width: 300px;
   height: 300px;

@@ -16,6 +16,10 @@ module.exports = {
         test: /\.vue$/, // 정규표현식
         loader: "vue-loader",
       },
+      {
+        test: /\.css$/,
+        use: ["vue-style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [new VueLoaderPlugin()],
