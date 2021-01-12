@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-/* scoped 사용하면 이 컴포넌트(ResponsCheck)안에서만 사용할수 있다. */
+/* scoped 사용하면 이 컴포넌트(ResponsCheck)안에서만 사용할수 있다. 스코프드 스타일 */
 #screen {
   width: 300px;
   height: 300px;
@@ -35,6 +35,7 @@ export default {
   justify-content: center;
   text-align: center;
   user-select: none;
+  background-color: aqua;
 }
 #screen.wating {
   background-color: aqua;
