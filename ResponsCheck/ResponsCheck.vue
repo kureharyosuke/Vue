@@ -6,9 +6,7 @@
     <!--  v-bind:class="state"> 가  state: "waiting", 를 가리킨다. -->
     <!-- React className? -->
     <div>
-      <div>
-        평균 시간:{{ result.reduce((a, c) => a + c, 0) / result.length || 0 }}ms
-      </div>
+      <div>평균 시간:{{ average }}ms</div>
       <!-- *** result.reduce((a, c) => a + c, 0) / result.length || 0 -->
       <button v-on:click="onReset">Reset</button>
     </div>
@@ -32,6 +30,12 @@ export default {
       state: "waiting",
       message: "클릭해서 시작해서요.",
     };
+  },
+  computed: {
+    average() {
+      return this.result.reduce((a, c) => a + c, 0) / this.result.length || 0;
+      // 데이터를 가공하거나 reduce같은 것을 사용할경우 꼭 ! computed는 다시 캐싱해준다.
+    },
   },
   methods: {
     onReset() {
