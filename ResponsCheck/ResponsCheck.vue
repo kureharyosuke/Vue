@@ -6,13 +6,24 @@
     <!--  v-bind:class="state"> 가  state: "waiting", 를 가리킨다. -->
     <!-- React className? -->
     <div>
-      <div>평균 시간:{{ result }}</div>
+      <div>
+        평균 시간:{{ result.reduce((a, c) => a + c, 0) / result.length || 0 }}ms
+      </div>
+      <!-- *** result.reduce((a, c) => a + c, 0) / result.length || 0 -->
       <button v-on:click="onReset">Reset</button>
     </div>
   </div>
 </template>
 
 <script>
+let startTime = 0;
+let endTime = 0;
+let timeout = null;
+
+/**
+ * startTime, endTime, timeout 을 data넣지 않는 이유는 화면가 상관이 없기떄문에.
+ */
+
 export default {
   name: "ResponsCheck",
   data() {
@@ -23,14 +34,27 @@ export default {
     };
   },
   methods: {
-    onReset() {},
+    onReset() {
+      this.result = [];
+    },
     onClickScreen() {
       if (this.state === "waiting") {
         this.state = "ready";
+        this.message = "초록색이 나오면 클릭하십시오.";
+        timeout = setTimeout(() => {
+          this.state = "now";
+          this.message = "클릭하세요!";
+          startTime = new Date();
+        }, Math.floor(Math.random() * 1000) + 2000); // 2초 ~3초 소요
       } else if (this.state === "ready") {
-        this.state = "now";
-      } else if (this.state === "now") {
+        clearTimeout(timeout);
         this.state = "waiting";
+        this.message = "너무 빠릅니다.";
+      } else if (this.state === "now") {
+        endTime = new Date();
+        this.state = "waiting";
+        this.message = "클릭하면 다시 시작됩니다.";
+        this.result.push(endTime - startTime);
       }
     },
   },
