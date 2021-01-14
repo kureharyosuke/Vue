@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div
-      id="computer"
-      v-bind:style="{
-        backgroundImage: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) {imageCoord} 0`,
-      }"
-    ></div>
+    <div id="computer" v-bind:style="computedStyleObject"></div>
+    <!-- :style -->
     <!-- 0 0 은 좌표임  -->
     <!-- v-bind:style= style를 가르키고 객체형식으로 쓸수 있다. :class 도 object ok -->
     <!-- Javascript = border-bottom-radius => borderBottomRadius -->
@@ -35,8 +31,16 @@ export default {
       score: 0,
     };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    computedStyleObject() {
+      return {
+        background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imageCoord} 0`,
+      }; //Caching
+    },
+  },
+  methods: {
+    onClickButton(choice) {},
+  },
 };
 </script>
 
