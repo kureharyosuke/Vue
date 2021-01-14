@@ -5,11 +5,14 @@
     </div>
     <!--  v-bind:class="state"> 가  state: "waiting", 를 가리킨다. -->
     <!-- React className? -->
-    <div>
+    <template v-show="result.length">
+      <!-- v-if와 v-show의 차이점 v-if는 태그가 존재하지않고 v-show 태그가 존재한다.  -->
+
       <div>평균 시간:{{ average }}ms</div>
       <!-- *** result.reduce((a, c) => a + c, 0) / result.length || 0 -->
       <button v-on:click="onReset">Reset</button>
-    </div>
+    </template>
+    <!-- 필요없는 div일경우 template 로 감싸주면 된다. -->
   </div>
 </template>
 
