@@ -43,18 +43,44 @@ export default {
   methods: {
     onClickButton(choice) {},
   },
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
   created() {
     console.log("created");
-    // 화면 보여지기는 하지만,
+    // 화면 보여지기는 하지만 만들어질때,
+  },
+  beforeMount() {
+    console.log("beforeMount");
   },
   mounted() {
     console.log("mounted");
+    // 화면 나타날때, 만들어졌을떄,
+    interval = setInterval(() => {
+      if (this.imgeCoord === rspCoords.바위) {
+        this.imgeCoord = rspCoords.가위;
+      } else if (this.imgeCoord === rspCoords.가위) {
+        this.imgeCoord = rspCoords.보;
+      } else if (this.imgeCoord === rspCoords.보) {
+        this.imgeCoord = rspCoords.바위;
+      }
+    }, 100);
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
   },
   updated() {
     console.log("updated");
+    // 데이터가 바뀌어서, 화면이 다시 만들어질때
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+    clearInterval(interval); //React에서는
   },
   destroyed() {
     console.log("destroyed");
+    // 화면에 사라질때, 삭제될때 파괴되다.
+    clearInterval(interval); //
   },
 };
 </script>
