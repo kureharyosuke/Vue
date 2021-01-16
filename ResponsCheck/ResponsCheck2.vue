@@ -13,6 +13,7 @@ let startTime = 0;
 let endTime = 0;
 let timeout = null;
 export default {
+  name: "ResponsChek2",
   data() {
     return {
       result: [],
