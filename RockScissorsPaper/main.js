@@ -1,5 +1,4 @@
 import Vue from "vue";
-import ResponsCheck from "./ResponsCheck";
-import ResponsCheck2 from "./ResponsCheck2";
+import RockScissorsPaper from "./RockScissorsPaper";
 
-new Vue(ResponsCheck2).$mount("#root");
+new Vue(RockScissorsPaper).$mount("#root");

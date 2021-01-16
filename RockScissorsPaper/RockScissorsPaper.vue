@@ -12,6 +12,7 @@
     </div>
     <div>{{ result }}</div>
     <div>현재 {{ score }}</div>
+    <lifecycle-example v-if="false" />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ const rspCoords = {
 }; //background-position CSS
 
 export default {
+  name: "RockScissorsPaper",
   data() {
     return {
       // vue.js 는 항상 데이터를 생각해라
@@ -40,6 +42,19 @@ export default {
   },
   methods: {
     onClickButton(choice) {},
+  },
+  created() {
+    console.log("created");
+    // 화면 보여지기는 하지만,
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  updated() {
+    console.log("updated");
+  },
+  destroyed() {
+    console.log("destroyed");
   },
 };
 </script>
