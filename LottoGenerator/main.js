@@ -1,5 +1,4 @@
 import Vue from "vue";
-import RockScissorsPaper from "./RockScissorsPaper";
-import RockScissorsPaper2 from "./RockScissorsPaper2";
+import LottoGenerator from "./LottoGenerator";
 
-new Vue(RockScissorsPaper).$mount("#root");
+new Vue(LottoGenerator).$mount("#root");

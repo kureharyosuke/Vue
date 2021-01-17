@@ -2,11 +2,15 @@
   <div>
     <div>당첨 숫자</div>
     <div id="결과창">
-      <lotto-ball v-for="ball in winBalls" number="5"></lotto-ball>
+      <lotto-ball
+        v-for="ball in winBalls"
+        :key="ball"
+        v-bind:number="ball"
+      ></lotto-ball>
     </div>
     <div>보너스</div>
     <lotto-ball v-if="bonus"></lotto-ball>
-    <button v-if="redo">한번더 !</button>
+    <button v-if="redo" @click="onClickRedo">한번더 !</button>
   </div>
 </template>
 
@@ -31,7 +35,7 @@ function getWinNumbers() {
 
 export default {
   components: {
-    "lotto-ball": LottoBall,
+    "lotto-ball": LottoBall, // LottoBall 단축
   },
   data() {
     return {
@@ -41,12 +45,27 @@ export default {
       redo: false,
     };
   },
+  created: {},
   computed: {},
-  methods: {},
-  mounted() {},
+  methods: {
+    onClickRedo() {},
+  },
+  mounted() {
+    // created화면이 만들어지고, 나서 로또번호가 하나하나 만들어질떄 마운티드
+    // let을 쓰면 문제가 안생기지만, var를 클로저 문제가 생긴다.
+    for (let i = 0; i < this.winNumbers.length - 1; i++) {
+      setTimeout(() => {
+        this.winBalls.push(this.winNumbers[i]);
+      }, (i + 1) * 1000);
+    }
+    setTimeout(() => {
+      this.bonus = this.winNumbers[6];
+      this.redo = true;
+    }, 7000);
+  },
   beforeDestroy() {},
   watch: {},
 };
 </script>
 
-<style></style>
+<style scoped></style>
