@@ -9,7 +9,7 @@
       ></lotto-ball>
     </div>
     <div>보너스</div>
-    <lotto-ball v-if="bonus"></lotto-ball>
+    <lotto-ball v-if="bonus" :number="bonus"></lotto-ball>
     <button v-if="redo" @click="onClickRedo">한번더 !</button>
   </div>
 </template>
@@ -18,7 +18,7 @@
 import LottoBall from "./LottoBall";
 
 function getWinNumbers() {
-  console.log("getWinNumbers");
+  // console.log("getWinNumbers");
   const candidate = Array(45)
     .fill()
     .map((v, i) => i + 1);
@@ -67,11 +67,11 @@ export default {
     },
     showBalls() {
       for (let i = 0; i < this.winNumbers.length - 1; i++) {
-        setTimeout(() => {
+        timeouts[i] = setTimeout(() => {
           this.winBalls.push(this.winNumbers[i]);
         }, (i + 1) * 1000);
       }
-      setTimeout(() => {
+      timeouts[6] = setTimeout(() => {
         this.bonus = this.winNumbers[6];
         this.redo = true;
       }, 7000);
@@ -96,7 +96,26 @@ export default {
       clearTimeout(t);
     });
   },
-  watch: {},
+  // watch: { watch는 쓰지말자.
+  //   // 값이 바뀌었는지 안바뀌었는지 감시하는 기능 : watch
+  //   // winBalls(value, oldValue) {
+  //   //   if (value.length === 0) {
+  //   //     console.log(value, oldValue);
+
+  //   //     // winBalls가 빈배열이 될때 실행
+  //   //     this.showBalls();
+  //   //   }
+  //   // },
+  //   bonus(value, oldValue) {
+  //     console.log(value, oldValue);
+  //     // if (value === null) {
+  //     //   this.showBalls();
+  //     // }
+  //     if (bonus === null) {
+  //       this.showBalls();
+  //     }
+  //   },
+  // },
 };
 </script>
 
