@@ -33,6 +33,7 @@ function getWinNumbers() {
   return [...winNumbers, bonusNumber];
 }
 
+const timeouts = [];
 export default {
   components: {
     "lotto-ball": LottoBall, // LottoBall 단축
@@ -48,22 +49,53 @@ export default {
   created: {},
   computed: {},
   methods: {
-    onClickRedo() {},
+    onClickRedo() {
+      this.winNumbers = getWinNumbers();
+      this.winBalls = [];
+      this.bonus = null;
+      this.redo = false;
+      this.showBalls();
+      // for (let i = 0; i < this.winNumbers.length - 1; i++) {
+      //   setTimeout(() => {
+      //     this.winBalls.push(this.winNumbers[i]);
+      //   }, (i + 1) * 1000);
+      // }
+      // setTimeout(() => {
+      //   this.bonus = this.winNumbers[6];
+      //   this.redo = true;
+      // }, 7000);
+    },
+    showBalls() {
+      for (let i = 0; i < this.winNumbers.length - 1; i++) {
+        setTimeout(() => {
+          this.winBalls.push(this.winNumbers[i]);
+        }, (i + 1) * 1000);
+      }
+      setTimeout(() => {
+        this.bonus = this.winNumbers[6];
+        this.redo = true;
+      }, 7000);
+    },
   },
   mounted() {
     // created화면이 만들어지고, 나서 로또번호가 하나하나 만들어질떄 마운티드
     // let을 쓰면 문제가 안생기지만, var를 클로저 문제가 생긴다.
-    for (let i = 0; i < this.winNumbers.length - 1; i++) {
-      setTimeout(() => {
-        this.winBalls.push(this.winNumbers[i]);
-      }, (i + 1) * 1000);
-    }
-    setTimeout(() => {
-      this.bonus = this.winNumbers[6];
-      this.redo = true;
-    }, 7000);
+    // for (let i = 0; i < this.winNumbers.length - 1; i++) {
+    //   setTimeout(() => {
+    //     this.winBalls.push(this.winNumbers[i]);
+    //   }, (i + 1) * 1000);
+    // }
+    // setTimeout(() => {
+    //   this.bonus = this.winNumbers[6];
+    //   this.redo = true;
+    // }, 7000);
+    this.showBalls();
   },
-  beforeDestroy() {},
+  beforeDestroy() {
+    timeouts.forEach((t) => {
+      clearTimeout(t);
+    });
+  },
   watch: {},
 };
 </script>
