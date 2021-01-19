@@ -16,12 +16,25 @@ module.exports = {
         test: /\.vue$/, // 정규표현식
         loader: "vue-loader",
       },
+      {
+        test: /\.css$/,
+        use: [
+          "vue-style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              esModule: false,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [new VueLoaderPlugin()],
   output: {
-    filename: "app.js",
+    filename: "[name].js",
     path: path.join(__dirname, "./dist"),
+    publicPath: "/dist", // webpack-dev-server install  = add   publicPath: "/dist",
   },
 };
 

@@ -7,7 +7,8 @@
     </form>
     <div>Try:{{ tries.length }}</div>
     <ul>
-      <li v-for="t in tries">
+      <li v-for="t in tries" v-bind:key="t.try">
+        <!-- v-bind:key에는 고유한 값이 들어가야 합니다. v-bind:key="t.try" -->
         <div>
           {{ t.try }}
         </div>

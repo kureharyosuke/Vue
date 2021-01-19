@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import HelloVue from "@/components/HelloVue";
 import Read from "@/components/Read";
 import Create from "@/components/Create";
 import Detail from "@/components/Detail";
+import Liked from "@/components/Liked";
 
 Vue.use(Router);
 
@@ -14,6 +14,11 @@ export default new Router({
     //   name: "HelloVue",
     //   component: HelloVue
     // },
+    {
+      path: "/liked",
+      name: "Liked",
+      component: Liked
+    },
     {
       path: "/",
       name: "Read",

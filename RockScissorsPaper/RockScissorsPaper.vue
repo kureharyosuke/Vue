@@ -12,7 +12,6 @@
     </div>
     <div>{{ result }}</div>
     <div>현재 {{ score }}</div>
-    <lifecycle-example v-if="false" />
   </div>
 </template>
 
@@ -20,15 +19,29 @@
 const rspCoords = {
   바위: "0",
   가위: "-142px",
-  보: "-284",
+  보: "-284px",
 }; //background-position CSS
+
+const scores = {
+  가위: 1,
+  바위: 0,
+  보: -1,
+};
+
+const computerChoice = (imgCoord) => {
+  return Object.entries(rspCoords).find(function(v) {
+    return v[1] === imgCoord;
+  })[0];
+};
+
+let interval = null;
 
 export default {
   name: "RockScissorsPaper",
   data() {
     return {
       // vue.js 는 항상 데이터를 생각해라
-      imgeCoord: rspCoords.바위,
+      imgCoord: rspCoords.바위,
       result: "",
       score: 0,
     };
@@ -36,12 +49,40 @@ export default {
   computed: {
     computedStyleObject() {
       return {
-        background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imageCoord} 0`,
+        background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imgCoord} 0`,
       }; //Caching
     },
   },
   methods: {
-    onClickButton(choice) {},
+    changeHand() {
+      interval = setInterval(() => {
+        if (this.imgCoord === rspCoords.바위) {
+          this.imgCoord = rspCoords.가위;
+        } else if (this.imgCoord === rspCoords.가위) {
+          this.imgCoord = rspCoords.보;
+        } else if (this.imgCoord === rspCoords.보) {
+          this.imgCoord = rspCoords.바위;
+        }
+      }, 100);
+    },
+    onClickButton(choice) {
+      clearInterval(interval);
+      const myScore = scores[choice];
+      const cpuScore = scores[computerChoice(this.imgCoord)];
+      const diff = myScore - cpuScore;
+      if (diff === 0) {
+        this.result = "비겼습니다.";
+      } else if ([-1, 2].includes(diff)) {
+        this.result = "이겼습니다.";
+        this.score += 1;
+      } else {
+        this.result = "졌습니다.";
+        this.score -= 1;
+      }
+      setTimeout(() => {
+        this.changeHand();
+      }, 1000);
+    },
   },
   beforeCreate() {
     console.log("beforeCreate");
@@ -56,15 +97,7 @@ export default {
   mounted() {
     console.log("mounted");
     // 화면 나타날때, 만들어졌을떄,
-    interval = setInterval(() => {
-      if (this.imgeCoord === rspCoords.바위) {
-        this.imgeCoord = rspCoords.가위;
-      } else if (this.imgeCoord === rspCoords.가위) {
-        this.imgeCoord = rspCoords.보;
-      } else if (this.imgeCoord === rspCoords.보) {
-        this.imgeCoord = rspCoords.바위;
-      }
-    }, 100);
+    this.changeHand();
   },
   beforeUpdate() {
     console.log("beforeUpdate");
@@ -80,12 +113,12 @@ export default {
   destroyed() {
     console.log("destroyed");
     // 화면에 사라질때, 삭제될때 파괴되다.
-    clearInterval(interval); //
+    // clearInterval(interval); // vue에서는 둘중하나
   },
 };
 </script>
 
-<style>
+<style scoped>
 #computer {
   width: 142px;
   height: 200px;
