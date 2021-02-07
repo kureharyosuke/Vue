@@ -1,5 +1,6 @@
-import Vue from "vue";
-import RockScissorsPaper from "./RockScissorsPaper";
-import LottoGenerator from "./LottoGenerator";
+import Vue from 'vue';
+import TicTacToe from './TicTacToe';
 
-new Vue(LottoGenerator).$mount("#root");
+new Vue({
+  render: createElement => createElement(TicTacToe)
+}).$mount('#root');
