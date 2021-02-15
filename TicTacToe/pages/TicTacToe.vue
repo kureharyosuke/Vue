@@ -1,6 +1,6 @@
 <template>
 <div>
-    <table-component :table-data="tableData" />
+    <table-component v-bind:table-data="tableData" :turn="turn" />
     <div>{{turn}}님의 턴입니다.</div>
     <!-- v-bind: 자식컴포넌트 데이터를 건내줄때(TableComponent)-->
 </div>
@@ -8,7 +8,7 @@
 
 <script>
 import Vue from 'vue'
-import TableComponent from '../components/organlsms/TableComponent'
+import TableComponent from '../components/organlsms/TableComponent.vue'
 export default {
     components: {
         TableComponent,
@@ -33,4 +33,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+table {
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+</style>

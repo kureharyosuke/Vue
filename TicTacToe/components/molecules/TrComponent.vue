@@ -6,7 +6,9 @@
       :cell-index="index"
       :row-index="rowIndex"
       :key="index"
+      :turn="turn"
     ></td-component>
+    <!-- 자식(TdComponent)한테 다시 데이터를 넘겨준다. -->
   </tr>
 </template>
 
@@ -20,6 +22,7 @@ export default {
   props: {
     rowData: Array,
     rowIndex: Number,
+    // 부모(tableComponent)로부터 데이터를 받고
   },
   data() {
     return {
