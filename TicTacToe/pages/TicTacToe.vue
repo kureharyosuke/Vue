@@ -8,7 +8,7 @@
 
 <script>
 import Vue from 'vue'
-import TableComponent from '../components/organlsms/TableComponent'
+import TableComponent from '../components/organlsms/TableComponent.vue'
 export default {
     components: {
         TableComponent,
@@ -33,4 +33,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+table {
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+</style>

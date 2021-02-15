@@ -13,13 +13,13 @@ export default {
   },
   methods: {
     onClickTd() {
-      // this.$root.$data;
       console.log(this.$root.$data);
       console.log(this.$parent.$data);
-      console.log(this.$root.$data.turn);
+      // console.log(this.$root.$data.turn) // undefined
+      // console.log(this.$root.$data.tableData) // undefined
       const rootData = this.$root.$data;
-      rootData.tableData[this.rowIndex][this.cellIndex] =  rootData.turn;
-      rootData.turn =  rootData.turn === 'O' ? 'X' : 'O';
+      rootData.tableData[this.rowIndex][this.cellIndex] = rootData.turn;
+      rootData.turn = rootData.turn === "O" ? "X" : "O";
       /**
        * {turn: "O", __ob__: Observer}
        *turn: "X"

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TrComponent from "../components/molecules/TrComponent.vue";
+import TrComponent from "../molecules/TrComponent.vue"
 export default {
   components: {
     TrComponent,
