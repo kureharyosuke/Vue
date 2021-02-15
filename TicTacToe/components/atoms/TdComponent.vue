@@ -6,9 +6,10 @@
 export default {
   props: {
     cellData: String,
-    // O,X String
+    // cellData: O,X String
     rowIndex: Number,
     cellIndex: Number,
+    turn: String,
   },
   methods: {
     onClickTd() {

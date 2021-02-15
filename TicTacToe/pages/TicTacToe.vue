@@ -1,6 +1,6 @@
 <template>
 <div>
-    <table-component :table-data="tableData" />
+    <table-component v-bind:table-data="tableData" :turn="turn" />
     <div>{{turn}}님의 턴입니다.</div>
     <!-- v-bind: 자식컴포넌트 데이터를 건내줄때(TableComponent)-->
 </div>
