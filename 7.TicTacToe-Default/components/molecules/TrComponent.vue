@@ -6,7 +6,6 @@
       :cell-index="index"
       :row-index="rowIndex"
       :key="index"
-      :turn="turn"
     ></td-component>
     <!-- 자식(TdComponent)한테 다시 데이터를 넘겨준다. -->
   </tr>
