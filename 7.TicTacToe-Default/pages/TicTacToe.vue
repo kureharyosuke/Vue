@@ -1,6 +1,6 @@
 <template>
 <div>
-    <table-component v-bind:table-data="tableData" :turn="turn" />
+    <table-component v-bind:table-data="tableData" />
     <div>{{turn}}님의 턴입니다.</div>
     <!-- v-bind: 자식컴포넌트 데이터를 건내줄때(TableComponent)-->
 </div>
@@ -26,8 +26,8 @@ export default {
     methods: {
         onChangeData() {
             // this.tableData[1][0] = 'X'; 작동하지 않음...
-            this.$set(this.tableData[2], 1, 'O')
-            Vue.set(this.tableData[1], 0, 'X')
+            this.$set(this.tableData[1], 0, 'X')
+            // Vue.set(this.tableData[1], 0, 'X')
         }
     },
 }

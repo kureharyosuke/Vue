@@ -5,7 +5,6 @@
       :row-data="rowData"
       :row-index="index"
       :key="index"
-      :turn="turn"
     ></tr-component>
     <!-- :row-index="index" 내가 몇번쨰 행인지 가르켜준다. -->
   </table>
