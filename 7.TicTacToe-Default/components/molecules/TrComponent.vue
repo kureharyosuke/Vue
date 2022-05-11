@@ -19,15 +19,15 @@ export default {
     TdComponent,
   },
   props: {
+    // 부모(tableComponent)로부터 데이터를 받고
     rowData: Array,
     rowIndex: Number,
-    // 부모(tableComponent)로부터 데이터를 받고
   },
   data() {
     return {
-      parent: 'Im your father'
-    }
-  }
+      parent: "Im your father",
+    };
+  },
 };
 </script>
 
